@@ -1,4 +1,4 @@
-# Forward a message to another user
+# Forward a direct message to another user
 
 Mattermost **Team Edition** plugin that forwards a direct-message or group-message post, including images and other files, to one or more people. Each person receives a **separate direct message**. The original conversation gets a short thread note listing who received it.
 
