@@ -32,6 +32,6 @@ docker run --rm \
   -e GOOS="${GOOS}" \
   -e GOARCH="${GOARCH}" \
   "${GO_IMAGE}" \
-  bash -c 'go mod tidy && make dist'
+  bash -c 'go test ./server -count=1 && go mod tidy && make dist'
 
 echo "Artifact: ${ROOT}/dist/com.mst.forward-private.tar.gz"

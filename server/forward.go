@@ -20,8 +20,7 @@ func (p *ForwardPrivatePlugin) buildForwardBody(sourcePost *model.Post, sourceCh
 		if b.Len() > 0 {
 			b.WriteString("\n\n")
 		}
-		label := originLabel(sourceChannel)
-		b.WriteString(fmt.Sprintf("_Forwarded from a private conversation (%s)._", label))
+		b.WriteString(attributionLine(sourceChannel))
 	}
 	return strings.TrimSpace(b.String())
 }
@@ -34,6 +33,14 @@ func originLabel(ch *model.Channel) string {
 		return ch.DisplayName
 	}
 	return "private chat"
+}
+
+func attributionLine(ch *model.Channel) string {
+	label := originLabel(ch)
+	if ch != nil && (ch.Type == model.ChannelTypeOpen || ch.Type == model.ChannelTypePrivate) {
+		return fmt.Sprintf("_Forwarded from %s._", label)
+	}
+	return fmt.Sprintf("_Forwarded from a private conversation (%s)._", label)
 }
 
 type forwardResult struct {

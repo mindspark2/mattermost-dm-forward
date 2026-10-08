@@ -38,7 +38,7 @@ func (p *ForwardPrivatePlugin) ServeHTTP(_ *plugin.Context, w http.ResponseWrite
 	path := normalizePluginHTTPPath(r.URL.Path)
 	switch {
 	case path == "/api/v1/health":
-		p.writeJSON(w, http.StatusOK, map[string]string{"status": "ok", "version": "0.1.2"})
+		p.writeJSON(w, http.StatusOK, map[string]string{"status": "ok", "version": "0.1.4"})
 	case path == "/api/v1/action/start":
 		p.handleForwardStart(w, r)
 	case path == "/api/v1/action/open-dialog":

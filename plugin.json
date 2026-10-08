@@ -1,8 +1,8 @@
 {
   "id": "com.mst.forward-private",
   "name": "MST Forward Private",
-  "description": "Forward DM and group-message posts (with attachments) to other users via separate DMs, with a receipt in the source chat.",
-  "version": "0.1.2",
+  "description": "Forward a post (with attachments) from a channel, group message, or DM to other users via separate DMs, with a receipt on the source post.",
+  "version": "0.1.4",
   "min_server_version": "11.0.0",
   "server": {
     "executables": {
@@ -21,7 +21,7 @@
         "key": "Enabled",
         "display_name": "Enabled",
         "type": "bool",
-        "help_text": "Allow the Forward to… post menu action in DMs and group messages.",
+        "help_text": "Allow the Forward to… post menu action.",
         "default": true
       },
       {
@@ -35,7 +35,7 @@
         "key": "ShowAttribution",
         "display_name": "Show attribution on forwarded copies",
         "type": "bool",
-        "help_text": "Add a short footer on forwarded messages indicating they came from a private conversation.",
+        "help_text": "Add a short footer. Channel copies say Forwarded from {name}. Direct and group copies say they came from a private conversation.",
         "default": true
       },
       {

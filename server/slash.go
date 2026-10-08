@@ -28,7 +28,7 @@ func (p *ForwardPrivatePlugin) ExecuteCommand(_ *plugin.Context, args *model.Com
 	postID := extractPostIDFromText(text)
 	if postID == "" {
 		return &model.CommandResponse{
-			Text:         "Use **⋯ → Forward to…** on a message in a DM or group chat, or run `/forwardprivate` with a message permalink from that chat.",
+			Text:         "Use Message actions → **Forward to…** on a message, or run `/forwardprivate` with a message permalink.",
 			ResponseType: model.CommandResponseTypeEphemeral,
 		}, nil
 	}

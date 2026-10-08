@@ -44,11 +44,16 @@ func (p *ForwardPrivatePlugin) writeDialogError(w http.ResponseWriter, msg strin
 	_ = json.NewEncoder(w).Encode(model.SubmitDialogResponse{Error: msg})
 }
 
-func (p *ForwardPrivatePlugin) isPrivateConversationChannel(channel *model.Channel) bool {
+func (p *ForwardPrivatePlugin) isForwardSourceChannel(channel *model.Channel) bool {
 	if channel == nil {
 		return false
 	}
-	return channel.Type == model.ChannelTypeDirect || channel.Type == model.ChannelTypeGroup
+	switch channel.Type {
+	case model.ChannelTypeDirect, model.ChannelTypeGroup, model.ChannelTypeOpen, model.ChannelTypePrivate:
+		return true
+	default:
+		return false
+	}
 }
 
 func (p *ForwardPrivatePlugin) canAccessSourcePost(userID, postID string) (*model.Post, *model.Channel, *model.AppError) {
@@ -63,8 +68,8 @@ func (p *ForwardPrivatePlugin) canAccessSourcePost(userID, postID string) (*mode
 	if appErr != nil || ch == nil {
 		return nil, nil, appErr
 	}
-	if !p.isPrivateConversationChannel(ch) {
-		return nil, nil, model.NewAppError("ForwardPrivate", "plugin.forward_private.channel_type", nil, "only DMs and group messages", http.StatusForbidden)
+	if !p.isForwardSourceChannel(ch) {
+		return nil, nil, model.NewAppError("ForwardPrivate", "plugin.forward_private.channel_type", nil, "unsupported channel type", http.StatusForbidden)
 	}
 	if _, appErr := p.API.GetChannelMember(ch.Id, userID); appErr != nil {
 		return nil, nil, model.NewAppError("ForwardPrivate", "app.channel.get_member.missing.app_error", nil, "", http.StatusForbidden)

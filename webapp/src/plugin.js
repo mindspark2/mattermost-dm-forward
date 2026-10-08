@@ -18,7 +18,7 @@ function startForward(postId) {
 
 export default class ForwardPrivatePlugin {
     initialize(registry) {
-        // Always show. The server rejects posts that are not DMs or group messages.
+        // Always show. The server accepts channel, group, and direct-message posts.
         const filter = () => true;
         try {
             registry.registerPostDropdownMenuAction({
