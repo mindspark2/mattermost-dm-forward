@@ -1,0 +1,50 @@
+{
+  "id": "com.mst.forward-private",
+  "name": "MST Forward Private",
+  "description": "Forward DM and group-message posts (with attachments) to other users via separate DMs, with a receipt in the source chat.",
+  "version": "0.1.2",
+  "min_server_version": "11.0.0",
+  "server": {
+    "executables": {
+      "linux-amd64": "server/dist/plugin-linux-amd64",
+      "linux-arm64": "server/dist/plugin-linux-arm64"
+    }
+  },
+  "webapp": {
+    "bundle_path": "webapp/dist/main.js"
+  },
+  "settings_schema": {
+    "header": "",
+    "footer": "",
+    "settings": [
+      {
+        "key": "Enabled",
+        "display_name": "Enabled",
+        "type": "bool",
+        "help_text": "Allow the Forward to… post menu action in DMs and group messages.",
+        "default": true
+      },
+      {
+        "key": "MaxRecipients",
+        "display_name": "Max recipients per forward",
+        "type": "number",
+        "help_text": "Maximum users that can be selected in one forward (1–8).",
+        "default": 8
+      },
+      {
+        "key": "ShowAttribution",
+        "display_name": "Show attribution on forwarded copies",
+        "type": "bool",
+        "help_text": "Add a short footer on forwarded messages indicating they came from a private conversation.",
+        "default": true
+      },
+      {
+        "key": "PostReceiptInSourceChannel",
+        "display_name": "Receipt in source conversation",
+        "type": "bool",
+        "help_text": "Post a thread note on the original message listing who received the forward.",
+        "default": true
+      }
+    ]
+  }
+}
