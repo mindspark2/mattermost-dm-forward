@@ -18,7 +18,7 @@ This uses the standard plugin API. It does not need an Enterprise or Professiona
 
 ## Requirements
 
-- Mattermost Team Edition **11.0** or newer (tested on 11.11).
+- Mattermost Team Edition **11.0** or newer (tested on 12.0).
 - Docker, to build the server binary and webapp bundle. Go and Node are not required on the host.
 
 ## Build

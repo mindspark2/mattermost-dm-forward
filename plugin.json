@@ -2,7 +2,7 @@
   "id": "com.mst.forward-private",
   "name": "MST Forward Private",
   "description": "Forward a post (with attachments) from a channel, group message, or DM to other users via separate DMs, with a receipt on the source post.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "min_server_version": "11.0.0",
   "server": {
     "executables": {
@@ -35,7 +35,7 @@
         "key": "ShowAttribution",
         "display_name": "Show attribution on forwarded copies",
         "type": "bool",
-        "help_text": "Add a short footer. Channel copies say Forwarded from {name}. Direct and group copies say they came from a private conversation.",
+        "help_text": "Add a short footer on forwarded messages indicating they came from a private conversation.",
         "default": true
       },
       {
